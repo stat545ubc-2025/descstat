@@ -15,11 +15,11 @@ library(gapminder) #dataset used by demonstration
 #' @returns descriptive statistics in a tibble with one row per group and summary statistics in columns
 #'
 #' @examples
-#' desc_stat(gapminder, year, lifeExp)
-#' desc_stat(cancer_sample, diagnosis, area_mean)
+#' descstat(gapminder, year, lifeExp)
+#' descstat(cancer_sample, diagnosis, area_mean)
 #'
 #' @export
-desc_stat <- function(data, group, numeric_variable, na.rm = TRUE) {
+descstat <- function(data, group, numeric_variable, na.rm = TRUE) {
 
   needs_to_be_numeric <- data %>% select ({{numeric_variable}}) %>% pull () #this is to extract the numeric column
 
