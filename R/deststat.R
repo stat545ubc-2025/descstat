@@ -1,9 +1,3 @@
-library(roxygen2) #describe new function
-library(testthat) #verify new function
-library(tidyverse) #package used by new function
-library(dplyr) #package used by new function
-library(gapminder) #dataset used by demonstration
-
 #' @title Speedrun Descriptive Statistics
 #'
 #' @description
@@ -16,12 +10,22 @@ library(gapminder) #dataset used by demonstration
 #'
 #' @examples
 #' descstat(gapminder, year, lifeExp)
-#' descstat(cancer_sample, diagnosis, area_mean)
+#' descstat(gapminder, country, gdpPercap)
 #'
 #' @export
+#'
+
+library(roxygen2) #describe new function
+library(testthat) #verify new function
+library(tidyverse) #package used by new function
+library(dplyr) #package used by new function
+library(gapminder) #dataset used by demonstration
+
 descstat <- function(data, group, numeric_variable, na.rm = TRUE) {
 
-  needs_to_be_numeric <- data %>% select ({{numeric_variable}}) %>% pull () #this is to extract the numeric column
+  needs_to_be_numeric <- data %>%
+    select ({{numeric_variable}}) %>%
+    pull () #this is to extract the numeric column
 
   if (!is.numeric(needs_to_be_numeric)) {
     stop("numeric_variable must contain numeric values, duh")
