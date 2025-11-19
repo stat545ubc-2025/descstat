@@ -1,9 +1,9 @@
 Package: descstat
-Title: What the Package Does (One Line, Title Case)
+Title: Make a Descriptive Statstics Table
 Version: 0.0.0.9000
 Authors@R: 
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: This function produces a table that contains descriptive statistics (min, max, mean, median, and sd) of a numeric variable grouped by any column with repeated values. This analysis will remove any missing values from the data. 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
