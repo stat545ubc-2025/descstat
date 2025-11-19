@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# descstat
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of descstat is to produces a table that contains descriptive statistics (min, max, mean, median, and sd) of a numeric variable grouped by any column with repeated values. This analysis will remove any missing values from the data.
+
+## Installation
+
+You can install the development version of descstat from [GitHub](https://github.com/) with:
+
+``` {r}
+library(usethis)
+library(devtools)
+library(tidyverse)
+devtools::install_github("stat545ubc-2025/descstat")
+library(descstat)
+library(gapminder)
+
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+
+## basic example code
+descstat(gapminder, year, lifeExp)
+descstat(gapminder, country, gdpPercap)
+```
+

@@ -4,7 +4,6 @@ library(tidyverse) #package used by new function
 library(dplyr) #package used by new function
 library(gapminder) #dataset used by demonstration
 
-#for fun
 #' @title Speedrun Descriptive Statistics
 #'
 #' @description
