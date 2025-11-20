@@ -25,13 +25,7 @@ The goal of descstat is to produces a table that contains descriptive statistics
 You can install the development version of descstat from [GitHub](https://github.com/) with:
 
 ``` {r}
-library(usethis)
-library(devtools)
-library(tidyverse)
-library(descstat)
-library(gapminder)
 devtools::install_github("stat545ubc-2025/descstat")
-
 ```
 
 ## Example
