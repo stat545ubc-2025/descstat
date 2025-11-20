@@ -9,6 +9,8 @@
 library(testthat)
 library(descstat)
 library(gapminder)
+library(dplyr)
+library(magrittr)
 
 test_check("descstat")
 
@@ -22,8 +24,8 @@ test_function <- gapminder %>%
             sd = sd(lifeExp, na.rm = TRUE))
 
 test_that("function needs to work", {
-  expect_equal(desc_stat(gapminder, continent, lifeExp), test_function)
-  expect_equal(desc_stat(gapminder, year, gdpPercap),
+  expect_equal(descstat(gapminder, continent, lifeExp), test_function)
+  expect_equal(descstat(gapminder, year, gdpPercap),
                gapminder %>%
                  group_by(year) %>%
                  summarise(min = min(gdpPercap,na.rm = TRUE),
@@ -39,13 +41,13 @@ test_that("function needs to work", {
 # Therefore, the length of my tibble output should be 6
 
 test_that("checking if the tibble contains 6 columns",{
-  expect_length(desc_stat(gapminder, continent, lifeExp), 6)
+  expect_length(descstat(gapminder, continent, lifeExp), 6)
 })
 
 
 #Lastly, I want make sure that the columns names are what I was expecting.
 test_that("checking if tibble has the correct stat names",{
-  expect_true(all(c("min","max","mean","median","sd") %in% names(desc_stat(gapminder, continent, lifeExp))))
+  expect_true(all(c("min","max","mean","median","sd") %in% names(descstat(gapminder, continent, lifeExp))))
 })
 
 
@@ -54,18 +56,18 @@ pseudo_data <- tibble(
   x = c("A","A","B","A","C","C","B","C"),
   y = c(1, 2, 3, 4, 5, NA, 7, 8))
 
-desc_stat(pseudo_data, x, y, na.rm = TRUE)
+descstat(pseudo_data, x, y, na.rm = TRUE)
 
 test_that("function gives error for wrong numeric type", {
-  expect_error(desc_stat(pseudo_data, y, x))
+  expect_error(descstat(pseudo_data, y, x))
 })
 
 
 test_that("function gives error for wrong inputs", {
-  expect_error(desc_stat(pseudo_data, 1, 1))
+  expect_error(descstat(pseudo_data, 1, 1))
 })
 
 test_that("function should remove NA values", {
-  desc_stat(pseudo_data, x, y)
-  expect_false(any(is.na(desc_stat(pseudo_data, x,y))))
+  descstat(pseudo_data, x, y)
+  expect_false(any(is.na(descstat(pseudo_data, x,y))))
 })
