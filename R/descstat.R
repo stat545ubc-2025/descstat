@@ -9,13 +9,15 @@
 #' @returns descriptive statistics in a tibble with one row per group and summary statistics in columns
 #'
 #' @examples
+#' library(gapminder)
 #' descstat(gapminder, year, lifeExp)
 #' descstat(gapminder, country, gdpPercap)
 #'
 #' @export
-#'
+#' @importFrom dplyr group_by summarise
+#' @importFrom stats median sd
+#' @importFrom magrittr `%>%`
 
-library(magrittr)
 descstat <- function(data, group, numeric_variable, na.rm = TRUE) {
 
   needs_to_be_numeric <- data %>%
@@ -31,7 +33,7 @@ descstat <- function(data, group, numeric_variable, na.rm = TRUE) {
     dplyr::summarise(min = min({{numeric_variable}},na.rm = na.rm),
               max = max({{numeric_variable}}, na.rm = na.rm),
               mean = mean({{numeric_variable}}, na.rm = na.rm),
-              median = median({{numeric_variable}}, na.rm = na.rm),
-              sd = sd({{numeric_variable}}, na.rm = na.rm))
+              median = stats::median({{numeric_variable}}, na.rm = na.rm),
+              sd = stats::sd({{numeric_variable}}, na.rm = na.rm))
   return(descriptive_data)
 }

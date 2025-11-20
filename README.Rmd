@@ -26,6 +26,7 @@ You can install the development version of descstat from [GitHub](https://github
 
 ``` {r}
 devtools::install_github("stat545ubc-2025/descstat")
+library(descstat)
 ```
 
 ## Example
@@ -33,7 +34,7 @@ devtools::install_github("stat545ubc-2025/descstat")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-
+library(gapminder) #dataset to demonstrate the function
 ## basic example code
 descstat(gapminder, year, lifeExp)
 descstat(gapminder, country, gdpPercap)
