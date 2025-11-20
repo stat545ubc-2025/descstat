@@ -28,9 +28,9 @@ You can install the development version of descstat from [GitHub](https://github
 library(usethis)
 library(devtools)
 library(tidyverse)
-devtools::install_github("stat545ubc-2025/descstat")
 library(descstat)
 library(gapminder)
+devtools::install_github("stat545ubc-2025/descstat")
 
 ```
 
